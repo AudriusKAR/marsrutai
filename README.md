@@ -7,7 +7,7 @@ Sąrašas: https://audriuskar.github.io/marsrutai/
 ## Maršrutai
 
 - **[Vilnius → Senoji Varėna · be plentų](https://audriuskar.github.io/marsrutai/varena.html)** — Dzūkijos ratas per Trakų ir Alytaus rajono mažuosius kelius. ~330 km su grįžimu, 15 etapų.
-- **[Vilnius → Medininkų pilis · ratas](https://audriuskar.github.io/marsrutai/medininkai.html)** — Vilniaus rajono ratas per Naująją Vilnią, Mickūnus, Šumską ir Barvoniškes iki Medininkų pilies, atgal per Rukainius. ~100 km, lygis 2, tinka su mažesne patirtimi.
+- **[Vilnius → Medininkų pilis · ratas](https://audriuskar.github.io/marsrutai/medininkai.html)** — Vilniaus rajono ratas per Naująją Vilnią, Mickūnus, Šumską ir Barvoniškes iki Medininkų pilies ir aukščiausio Lietuvos taško (Aukštasis/Juozapinė), atgal per Rukainius. ~105 km, lygis 2, tinka su mažesne patirtimi.
 
 ## Kaip naudoti
 
