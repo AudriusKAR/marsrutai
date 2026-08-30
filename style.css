@@ -1,0 +1,157 @@
+:root{
+  --ink:#0E1310;
+  --panel:#161D18;
+  --panel2:#1C241D;
+  --line:#2C372D;
+  --sand:#DCD6C8;
+  --muted:#8B9589;
+  --amber:#F0A93B;
+  --lake:#5AB0A8;
+  --warn:#D46A4E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--ink);
+  color:var(--sand);
+  font-family:'IBM Plex Sans',-apple-system,system-ui,sans-serif;
+  font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:60px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+
+/* --- viršus --- */
+header{
+  padding:34px 0 26px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#131A15 0%,var(--ink) 100%);
+}
+.eyebrow{
+  font-family:'Oswald',sans-serif;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  font-size:12px;color:var(--amber);
+}
+.eyebrow a{color:var(--amber)}
+h1{
+  font-family:'Oswald',sans-serif;font-weight:600;
+  font-size:clamp(30px,8vw,46px);line-height:1.05;
+  text-transform:uppercase;letter-spacing:.01em;
+  margin:10px 0 14px;
+}
+h1 span{color:var(--muted)}
+.lead{color:var(--muted);font-size:15px;max-width:52ch}
+
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.stat{
+  flex:1 1 90px;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:10px 12px;
+}
+.stat b{
+  display:block;font-family:'Oswald',sans-serif;font-size:22px;
+  font-weight:600;color:var(--sand);line-height:1.2;
+}
+.stat i{
+  font-style:normal;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* --- instrukcija --- */
+.howto{
+  margin:26px 0 8px;background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--amber);border-radius:10px;padding:16px 18px;
+}
+.howto h2{
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:15px;
+  text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;
+}
+.howto ol{margin-left:18px;font-size:14.5px;color:#C6C0B2}
+.howto li{margin-bottom:7px}
+.howto li b{color:var(--sand)}
+
+/* --- etapai --- */
+.section-title{
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;
+  text-transform:uppercase;letter-spacing:.2em;color:var(--muted);
+  margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+
+.stop{display:flex;gap:14px;margin-bottom:14px}
+.post{
+  flex:0 0 52px;display:flex;flex-direction:column;align-items:center;
+}
+.km{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;
+  color:var(--amber);line-height:1;padding-top:14px;
+}
+.kmlabel{font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.rope{flex:1;width:2px;background:var(--line);margin-top:8px;border-radius:2px}
+
+.card{
+  flex:1;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px 16px;
+}
+.card.lake,.card.highlight{border-color:#2E4E4B;background:linear-gradient(180deg,#16211F,#161D18)}
+.card.finish{border-color:#4A3A1C;background:linear-gradient(180deg,#201D14,#161D18)}
+.card h3{
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:20px;
+  text-transform:uppercase;letter-spacing:.03em;line-height:1.15;
+}
+.tag{
+  display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 8px;border-radius:99px;margin-bottom:8px;
+  border:1px solid var(--line);color:var(--muted);
+}
+.tag.l,.tag.h{color:var(--lake);border-color:#2E4E4B}
+.tag.o{color:var(--amber);border-color:#4A3A1C}
+.card p{font-size:14.5px;color:#C2BCAE;margin-top:8px}
+.road{
+  font-size:13px;color:var(--muted);margin-top:10px;padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+.road b{color:var(--sand);font-weight:500}
+.alert{color:var(--warn)}
+
+.btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+a.btn{
+  flex:1 1 auto;text-align:center;text-decoration:none;
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:13px 14px;border-radius:9px;min-width:130px;
+}
+a.waze{background:var(--amber);color:#1A1206}
+a.waze:active{background:#D2912D}
+a.gmaps{background:transparent;color:var(--sand);border:1px solid var(--line)}
+a.mid{background:transparent;color:var(--amber);border:1px dashed #4A3A1C;font-size:13px}
+a.btn:focus-visible{outline:3px solid var(--lake);outline-offset:2px}
+
+/* --- apačia --- */
+.block{
+  background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;margin-bottom:12px;
+}
+.block h3{
+  font-family:'Oswald',sans-serif;font-weight:500;font-size:16px;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;
+}
+.block ul{margin-left:18px;font-size:14.5px;color:#C2BCAE}
+.block li{margin-bottom:6px}
+footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px;line-height:1.7}
+@media (prefers-reduced-motion:no-preference){
+  .card{transition:border-color .2s}
+}
+
+/* --- maršrutų sąrašas (index) --- */
+.routes{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+a.routecard{
+  display:block;text-decoration:none;color:inherit;
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px 20px 22px;transition:border-color .2s;
+}
+a.routecard:hover,a.routecard:focus-visible{border-color:var(--amber)}
+a.routecard .tag{margin-bottom:10px}
+a.routecard h2{
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;
+  text-transform:uppercase;line-height:1.1;margin-bottom:8px;
+}
+a.routecard p{font-size:14.5px;color:#C2BCAE}
+a.routecard .stats{margin-top:14px}

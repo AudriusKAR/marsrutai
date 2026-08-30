@@ -3,483 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vilnius → Senoji Varėna · be plentų</title>
+<title>Motociklo maršrutai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0E1310;
-  --panel:#161D18;
-  --panel2:#1C241D;
-  --line:#2C372D;
-  --sand:#DCD6C8;
-  --muted:#8B9589;
-  --amber:#F0A93B;
-  --lake:#5AB0A8;
-  --warn:#D46A4E;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--ink);
-  color:var(--sand);
-  font-family:'IBM Plex Sans',-apple-system,system-ui,sans-serif;
-  font-size:16px;line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  padding-bottom:60px;
-}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-
-/* --- viršus --- */
-header{
-  padding:34px 0 26px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg,#131A15 0%,var(--ink) 100%);
-}
-.eyebrow{
-  font-family:'Oswald',sans-serif;font-weight:500;
-  letter-spacing:.22em;text-transform:uppercase;
-  font-size:12px;color:var(--amber);
-}
-h1{
-  font-family:'Oswald',sans-serif;font-weight:600;
-  font-size:clamp(30px,8vw,46px);line-height:1.05;
-  text-transform:uppercase;letter-spacing:.01em;
-  margin:10px 0 14px;
-}
-h1 span{color:var(--muted)}
-.lead{color:var(--muted);font-size:15px;max-width:52ch}
-
-.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.stat{
-  flex:1 1 90px;background:var(--panel);border:1px solid var(--line);
-  border-radius:10px;padding:10px 12px;
-}
-.stat b{
-  display:block;font-family:'Oswald',sans-serif;font-size:22px;
-  font-weight:600;color:var(--sand);line-height:1.2;
-}
-.stat i{
-  font-style:normal;font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);
-}
-
-/* --- instrukcija --- */
-.howto{
-  margin:26px 0 8px;background:var(--panel);border:1px solid var(--line);
-  border-left:3px solid var(--amber);border-radius:10px;padding:16px 18px;
-}
-.howto h2{
-  font-family:'Oswald',sans-serif;font-weight:500;font-size:15px;
-  text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;
-}
-.howto ol{margin-left:18px;font-size:14.5px;color:#C6C0B2}
-.howto li{margin-bottom:7px}
-.howto li b{color:var(--sand)}
-
-/* --- etapai --- */
-.section-title{
-  font-family:'Oswald',sans-serif;font-weight:500;font-size:13px;
-  text-transform:uppercase;letter-spacing:.2em;color:var(--muted);
-  margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);
-}
-
-.stop{display:flex;gap:14px;margin-bottom:14px}
-.post{
-  flex:0 0 52px;display:flex;flex-direction:column;align-items:center;
-}
-.km{
-  font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;
-  color:var(--amber);line-height:1;padding-top:14px;
-}
-.kmlabel{font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.rope{flex:1;width:2px;background:var(--line);margin-top:8px;border-radius:2px}
-
-.card{
-  flex:1;background:var(--panel);border:1px solid var(--line);
-  border-radius:12px;padding:14px 16px 16px;
-}
-.card.lake{border-color:#2E4E4B;background:linear-gradient(180deg,#16211F,#161D18)}
-.card.finish{border-color:#4A3A1C;background:linear-gradient(180deg,#201D14,#161D18)}
-.card h3{
-  font-family:'Oswald',sans-serif;font-weight:500;font-size:20px;
-  text-transform:uppercase;letter-spacing:.03em;line-height:1.15;
-}
-.tag{
-  display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  padding:3px 8px;border-radius:99px;margin-bottom:8px;
-  border:1px solid var(--line);color:var(--muted);
-}
-.tag.l{color:var(--lake);border-color:#2E4E4B}
-.tag.o{color:var(--amber);border-color:#4A3A1C}
-.card p{font-size:14.5px;color:#C2BCAE;margin-top:8px}
-.road{
-  font-size:13px;color:var(--muted);margin-top:10px;padding-top:10px;
-  border-top:1px dashed var(--line);
-}
-.road b{color:var(--sand);font-weight:500}
-.alert{color:var(--warn)}
-
-.btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-a.btn{
-  flex:1 1 auto;text-align:center;text-decoration:none;
-  font-family:'Oswald',sans-serif;font-weight:500;font-size:14px;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:13px 14px;border-radius:9px;min-width:130px;
-}
-a.waze{background:var(--amber);color:#1A1206}
-a.waze:active{background:#D2912D}
-a.gmaps{background:transparent;color:var(--sand);border:1px solid var(--line)}
-a.mid{background:transparent;color:var(--amber);border:1px dashed #4A3A1C;font-size:13px}
-a.btn:focus-visible{outline:3px solid var(--lake);outline-offset:2px}
-
-/* --- apačia --- */
-.block{
-  background:var(--panel2);border:1px solid var(--line);border-radius:12px;
-  padding:16px 18px;margin-bottom:12px;
-}
-.block h3{
-  font-family:'Oswald',sans-serif;font-weight:500;font-size:16px;
-  text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;
-}
-.block ul{margin-left:18px;font-size:14.5px;color:#C2BCAE}
-.block li{margin-bottom:6px}
-footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px;line-height:1.7}
-@media (prefers-reduced-motion:no-preference){
-  .card{transition:border-color .2s}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Dzūkijos ratas · asfaltas · be plentų</div>
-  <h1>Vilnius → Senoji&nbsp;Varėna <span>/ Varėna</span></h1>
-  <p class="lead">Vakarinis apvažiavimas per Trakų ir Alytaus rajono mažuosius kelius: Vilkokšnio ežeras, Velnio duobė, Pivašiūnų kalva, Daugų ežeras, Nemuno slėnis ties Merkine. Pirmyn — 240 km be plentų. Atgal — A4 tiesiai namo, ~90 km per valandą.</p>
-  <div class="stats">
-    <div class="stat"><b>~330</b><i>km su grįžimu</i></div>
-    <div class="stat"><b>~5:00</b><i>grynas važiav.</i></div>
-    <div class="stat"><b>240 / 90</b><i>pirmyn / atgal</i></div>
-    <div class="stat"><b>2</b><i>ežerai</i></div>
-  </div>
+  <div class="eyebrow">Asmeniniai maršrutai · Waze / Google Maps</div>
+  <h1>Motociklo <span>maršrutai</span></h1>
+  <p class="lead">Pasirink maršrutą. Kiekvienas etapas turi atskirą Waze mygtuką su tiksliomis koordinatėmis — vieną etapą vienu metu, kad navigacija nemestų ant plento.</p>
 </header>
 
-<div class="howto">
-  <h2>Kaip važiuoti su Waze</h2>
-  <ol>
-    <li><b>Vieną etapą vienu metu.</b> Spaudi to etapo geltoną mygtuką — Waze veda tik iki to taško (10–25 km), tad plentu apvesti tiesiog nėra kur.</li>
-    <li><b>Kur pažymėta „tarpinis taškas“</b> — pirma spausk punktyrinį mygtuką, tada Waze paspausk <b>„Pridėti sustojimą“</b> ir pridėk pagrindinį tikslą. Taip gauni du taškus viename maršrute ir Waze nebemeta ant plento.</li>
-    <li><b>Atvykus</b> — grįžti į šį puslapį, spaudi kitą etapą. Puslapį įsidėk į naršyklės pradžios ekraną.</li>
-    <li><b>Jei Waze vis tiek suka į A4 arba A16</b> — nustatymuose įjunk <i>Venkite greitkelių</i>, arba važiuok pagal apačioje nurodytą kelio numerį ir tiesiog ignoruok „perskaičiuoju“.</li>
-  </ol>
-</div>
+<div class="routes">
 
-<div class="section-title">Etapai</div>
-
-<!-- 1 -->
-<div class="stop">
-  <div class="post"><div class="km">22</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 01 · išvažiavimas</span>
-    <h3>Lentvaris</h3>
-    <p>Iš Vilniaus per Grigiškes ir Vokės slėnį. Nuobodžiausia dalis — pravažiuok ir pamiršk. Lentvaryje verta stabtelėti prie dvaro parko su tvenkiniais.</p>
-    <div class="road"><b>Kelias:</b> senasis Vokės kelias per Grigiškes. <span class="alert">A1 automagistralės nereikia.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.6441%2C25.0512&navigate=yes">Waze → Lentvaris</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.6441,25.0512">Maps</a>
+  <a class="routecard" href="varena.html">
+    <span class="tag">Dzūkijos ratas · be plentų</span>
+    <h2>Vilnius → Senoji Varėna</h2>
+    <p>Vakarinis apvažiavimas per Trakų ir Alytaus rajono mažuosius kelius: Vilkokšnio ežeras, Velnio duobė, Pivašiūnų kalva, Daugų ežeras, Nemuno slėnis ties Merkine.</p>
+    <div class="stats">
+      <div class="stat"><b>~330</b><i>km su grįžimu</i></div>
+      <div class="stat"><b>~5:00</b><i>grynas važiav.</i></div>
+      <div class="stat"><b>2</b><i>ežerai</i></div>
     </div>
-  </div>
-</div>
+  </a>
 
-<!-- 2 -->
-<div class="stop">
-  <div class="post"><div class="km">47</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 02 · miškas prasideda</span>
-    <h3>Rūdiškės</h3>
-    <p>Nuo čia prasideda tai, dėl ko važiuoji: siauras asfaltas per Trakų miškus, beveik be eismo, su normaliais posūkiais.</p>
-    <div class="road"><b>Kelias:</b> Lentvaris → Paluknys → Rūdiškės. <span class="alert">Waze čia mėgsta mesti į A16 per Trakus — jei siūlo per Trakus, pirma dėk Paluknį, tada pridėk Rūdiškes kaip sustojimą.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.5158%2C24.8266&navigate=yes">Waze → Rūdiškės</a>
-      <a class="btn mid" href="https://www.waze.com/ul?ll=54.5020%2C24.9845&navigate=yes">Tarpinis taškas: Paluknys</a>
+  <a class="routecard" href="medininkai.html">
+    <span class="tag h">Vilniaus rajono ratas · lygis 2</span>
+    <h2>Vilnius → Medininkų pilis</h2>
+    <p>Vakaro ratas į rytus nuo Vilniaus per Naująją Vilnią, Mickūnus ir Šumską iki Medininkų pilies prie sienos su Baltarusija, atgal per Rukainius.</p>
+    <div class="stats">
+      <div class="stat"><b>~100</b><i>km ratas</i></div>
+      <div class="stat"><b>~1:45</b><i>grynas važiav.</i></div>
+      <div class="stat"><b>1</b><i>pilis</i></div>
     </div>
-  </div>
-</div>
+  </a>
 
-<!-- 3 -->
-<div class="stop">
-  <div class="post"><div class="km">61</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card lake">
-    <span class="tag l">Etapas 03 · ežeras Nr. 1 · stotelė</span>
-    <h3>Vilkokšnio ežeras</h3>
-    <p>Didelis, švarus, miškų apsuptas ežeras Aukštadvario regioninio parko pakraštyje. Artimiausias didesnis miestas — už 30 km, tad savaitgalį čia ramu. Smėlio krantas, galima privažiuoti prie pat vandens, gera vieta kavai ir kojoms ištiesti.</p>
-    <div class="road"><b>Kelias:</b> Rūdiškės → Grendavė → ežero pakrantė. Paskutinė atkarpa iki pat kranto – žvyras.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.5096%2C24.6663&navigate=yes">Waze → Vilkokšnis</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.5096,24.6663">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 4 -->
-<div class="stop">
-  <div class="post"><div class="km">71</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 04</span>
-    <h3>Onuškis</h3>
-    <p>Mažas Dzūkijos miestelis su neogotikine Šv. apaštalų Pilypo ir Jokūbo bažnyčia. Degalinė — paskutinė patogi prieš ilgą ruožą iki Butrimonių.</p>
-    <div class="road"><b>Kelias:</b> pakrantės keliukas per Grendavę. Vietomis kupstuota, bet asfaltas.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.4833%2C24.5887&navigate=yes">Waze → Onuškis</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.4833,24.5887">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 5 -->
-<div class="stop">
-  <div class="post"><div class="km">87</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 05 · geriausi posūkiai</span>
-    <h3>Aukštadvaris</h3>
-    <p>Kalvotas ruožas per regioninį parką — čia kelias pagaliau pradeda vingiuoti ir kilnotis. Miestelyje – piliavietė ir Strėvos slėnis.</p>
-    <div class="road"><b>Kelias:</b> tiesioginis Onuškis–Aukštadvaris kelias. <span class="alert">Jei Waze suka į A16 per Trakus – atmesk, tiesioginis kelias yra.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.5792%2C24.5273&navigate=yes">Waze → Aukštadvaris</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.5792,24.5273">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 5b -->
-<div class="stop">
-  <div class="post"><div class="km">92</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag o">Etapas 05b · +10 km · galima praleisti</span>
-    <h3>Velnio duobė</h3>
-    <p>Didžiausia karstinė smegduobė Lietuvoje — 40 m gylio piltuvas miške, aikštelė, laiptai žemyn, 10 minučių pasivaikščiojimo. Nuo aikštelės atgal į maršrutą – pro Škilietus.</p>
-    <div class="road"><b>Kelias:</b> asfaltas iki aikštelės.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.6117%2C24.5155&navigate=yes">Waze → Velnio duobė</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.6117,24.5155">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 6 -->
-<div class="stop">
-  <div class="post"><div class="km">108</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 06</span>
-    <h3>Užuguostis</h3>
-    <p>Tuščias kelias tarp laukų ir ežerėlių, Prienų rajono pakraštys. Sena medinė bažnyčia, keli namai — ir viskas.</p>
-    <div class="road"><b>Kelias:</b> nuo Aukštadvario vakarų kryptimi, per Vytautavą.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.6242%2C24.3890&navigate=yes">Waze → Užuguostis</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.6242,24.3890">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 7 -->
-<div class="stop">
-  <div class="post"><div class="km">128</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 07 · posūkis į pietus</span>
-    <h3>Butrimonys</h3>
-    <p>Miestelis su neįprasta trikampe aikšte. Nuo čia kelias suka į pietus — Dzūkijos link.</p>
-    <div class="road"><b>Kelias:</b> per Vartus / Klydžionis. <span class="alert">Nesileisk vedamas per Prienus ir A16.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.5009%2C24.2540&navigate=yes">Waze → Butrimonys</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.5009,24.2540">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 8 -->
-<div class="stop">
-  <div class="post"><div class="km">142</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 08 · stotelė</span>
-    <h3>Pivašiūnai</h3>
-    <p>Bažnyčia ant kalvos su vaizdu į ežerų kraštovaizdį — viena gražiausių apžvalgos vietų šitame ruože. Šalia piliakalnis. Rugpjūčio viduryje čia atlaidai, tada žmonių daug; kitomis dienomis tuščia.</p>
-    <div class="road"><b>Kelias:</b> Butrimonys–Pivašiūnai, tiesus asfaltas.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.4608%2C24.3726&navigate=yes">Waze → Pivašiūnai</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.4608,24.3726">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 9 -->
-<div class="stop">
-  <div class="post"><div class="km">155</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card lake">
-    <span class="tag l">Etapas 09 · ežeras Nr. 2 · pietūs</span>
-    <h3>Daugų ežeras</h3>
-    <p>Ilgas, vingiuotas ežeras miestelio pašonėje — pietinis paplūdimys smėlėtas, su bio-tualetu ir šiukšliadėžėmis. Alytus už 20 km, bet čia jo nesijaučia. Geriausia vieta ilgesnei pertraukai maždaug maršruto viduryje.</p>
-    <div class="road"><b>Kelias:</b> Pivašiūnai–Daugai. Privažiavimas prie paplūdimio – Vytauto g.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.3569%2C24.3424&navigate=yes">Waze → Daugų paplūdimys</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.3569,24.3424">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 10 -->
-<div class="stop">
-  <div class="post"><div class="km">167</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 10</span>
-    <h3>Alovė</h3>
-    <p>Kaimas prie Alovės ežero, medinė bažnyčia. Tik pravažiuoji — bet per jį eina asfaltuotas kelias į Nedzingę, o tiesesnis kelias yra žvyrkelis.</p>
-    <div class="road"><b>Kelias:</b> Daugai–Alovė, palei ežerų grandinę.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.3499%2C24.1741&navigate=yes">Waze → Alovė</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.3499,24.1741">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 11 -->
-<div class="stop">
-  <div class="post"><div class="km">187</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 11</span>
-    <h3>Nedzingė</h3>
-    <p>Varėnos rajono pradžia, pušynai ir smėlis. Kelias tiesus, tuščias, geras tempui atgauti prieš Nemuno slėnį.</p>
-    <div class="road"><b>Kelias:</b> Alovė–Nedzingė. <span class="alert">Jei Waze siūlo per Alytų — atmesk, ten prasideda plentas.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.2473%2C24.3303&navigate=yes">Waze → Nedzingė</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.2473,24.3303">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 12 -->
-<div class="stop">
-  <div class="post"><div class="km">203</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 12 · geriausias vaizdas</span>
-    <h3>Merkinės piliakalnis</h3>
-    <p>Nuo viršaus matyti Nemuno ir Merkio santaka, sala ir Dzūkijos miškai iki horizonto. Laiptai statūs, bet vertė — didžiausia visame maršrute. Aikštelė moto tinkama, šalia sūpynės ir kavinė (dažniausiai savaitgaliais).</p>
-    <div class="road"><b>Kelias:</b> Nedzingė → Merkinė. <span class="alert">A4 kertama tik statmenai, prie pat Merkinės.</span></div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.1582%2C24.1833&navigate=yes">Waze → Merkinės piliakalnis</a>
-      <a class="btn mid" href="https://www.waze.com/ul?ll=54.1422%2C24.1984&navigate=yes">+3 km: Merkinės piramidė</a>
-    </div>
-  </div>
-</div>
-
-<!-- 13 -->
-<div class="stop">
-  <div class="post"><div class="km">223</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag">Etapas 13</span>
-    <h3>Perloja</h3>
-    <p>1918–1923 m. čia veikė savarankiška Perlojos Respublika su savo kariuomene ir pinigais. Aikštėje – Vytauto Didžiojo paminklas, vienas nedaugelio, kurio sovietai nenugriovė.</p>
-    <div class="road"><b>Kelias:</b> Merkinė–Perloja–Varėna. Regioninis kelias, eismo mažai.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.2151%2C24.4172&navigate=yes">Waze → Perloja</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.2151,24.4172">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 14 -->
-<div class="stop">
-  <div class="post"><div class="km">234</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card finish">
-    <span class="tag o">Etapas 14 · tikslas</span>
-    <h3>Senoji Varėna</h3>
-    <p>M. K. Čiurlionio gimtinė — čia jis gimė 1875 m., šalia bažnyčios stovi paminklas ir atminimo akmuo. Miestelis mažas ir tylus, priešingai nei naujoji Varėna.</p>
-    <div class="road"><b>Kelias:</b> tiesiai Varėnos link.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.2491%2C24.5481&navigate=yes">Waze → Senoji Varėna</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.2491,24.5481">Maps</a>
-    </div>
-  </div>
-</div>
-
-<!-- 15 -->
-<div class="stop">
-  <div class="post"><div class="km">240</div><div class="kmlabel">km</div></div>
-  <div class="card finish">
-    <span class="tag o">Etapas 15 · finišas</span>
-    <h3>Varėna</h3>
-    <p>Degalinės, kavinės, bankomatas. Čia maršrutas be plentų baigiasi — pripilk baką prieš grįžimą ir pailsėk, nes iki šiol nuvažiuota 240 km.</p>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.2154%2C24.5742&navigate=yes">Waze → Varėna</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.2154,24.5742">Maps</a>
-    </div>
-  </div>
-</div>
-
-<div class="section-title">Grįžimas · A4</div>
-
-<div class="stop">
-  <div class="post"><div class="km">285</div><div class="kmlabel">km</div><div class="rope"></div></div>
-  <div class="card">
-    <span class="tag o">Grįžimas 01 · +45 km · paskutinė stotelė</span>
-    <h3>Pirčiupių memorialas</h3>
-    <p>Prie pat A4, dešinėje pusėje važiuojant Vilniaus link. Gedimino Jokūbonio „Pirčiupių motina“ — 1944 m. sudegintam kaimui atminti. Aikštelė didelė, sustoti patogu, 10 minučių.</p>
-    <div class="road"><b>Kelias:</b> A4 nuo Varėnos per Valkininkus. Plentas, bet važiuoji jį tik dėl greičio namo.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.3936%2C24.9618&navigate=yes">Waze → Pirčiupiai</a>
-      <a class="btn gmaps" href="https://www.google.com/maps/search/?api=1&query=54.3936,24.9618">Maps</a>
-    </div>
-  </div>
-</div>
-
-<div class="stop">
-  <div class="post"><div class="km">330</div><div class="kmlabel">km</div></div>
-  <div class="card finish">
-    <span class="tag o">Grįžimas 02 · namo</span>
-    <h3>Vilnius</h3>
-    <p>Nuo Pirčiupių iki Vilniaus ~45 km, apie 35 min. Bendras dienos rezultatas: ~330 km, ~5 val. gryno važiavimo, plentas — tik paskutinis ruožas.</p>
-    <div class="road"><b>Jei nesinori A4:</b> iš Varėnos per Valkininkus ir Rūdiškes atgal į Lentvarį — ~110 km, ~1:40, bet dalį kelio kartosi tą patį, ką važiavai ryte.</div>
-    <div class="btns">
-      <a class="btn waze" href="https://www.waze.com/ul?ll=54.6872%2C25.2797&navigate=yes">Waze → Vilnius</a>
-      <a class="btn mid" href="https://www.waze.com/ul?ll=54.3583%2C24.8409&navigate=yes">Alternatyva: per Valkininkus</a>
-    </div>
-  </div>
-</div>
-
-<div class="section-title">Visas maršrutas žemėlapyje</div>
-<div class="block">
-  <h3>Google Maps — peržiūrai</h3>
-  <p style="font-size:14.5px;color:#C2BCAE;margin-bottom:12px">Maps riboja taškų skaičių, tad maršrutas padalintas į dvi dalis. Naudok tik apžvalgai — navigacijai imk Waze mygtukus aukščiau.</p>
-  <div class="btns">
-    <a class="btn gmaps" href="https://www.google.com/maps/dir/Vilnius/54.6441,25.0512/54.5158,24.8266/54.5096,24.6663/54.4833,24.5887/54.5792,24.5273/54.6117,24.5155/54.6242,24.3890/54.5009,24.2540/54.4608,24.3726/54.3569,24.3424">1 dalis: Vilnius → Daugai</a>
-    <a class="btn gmaps" href="https://www.google.com/maps/dir/54.3569,24.3424/54.3499,24.1741/54.2473,24.3303/54.1582,24.1833/54.2151,24.4172/54.2491,24.5481/54.2154,24.5742">2 dalis: Daugai → Varėna</a>
-    <a class="btn gmaps" href="https://www.google.com/maps/dir/54.2154,24.5742/54.3936,24.9618/Vilnius">3 dalis: grįžimas A4</a>
-  </div>
-</div>
-
-<div class="section-title">Jei laikas spaudžia</div>
-<div class="block">
-  <h3>Trumpinimai</h3>
-  <ul>
-    <li><b>Be Velnio duobės</b> (etapas 05b) — minus 10 km, minus ~15 min.</li>
-    <li><b>Be Merkinės</b>: iš Nedzingės suk tiesiai į Perloją — minus ~26 km, bet prarandi geriausią vaizdą maršrute. Daryk tik jei tikrai vėluoji.</li>
-    <li>Abu kartu: <b>~205 km</b> pirmyn, su grįžimu ~295 km ir <b>~4:15</b> gryno važiavimo.</li>
-  </ul>
-</div>
-
-<div class="block">
-  <h3>Ką reikia žinoti</h3>
-  <ul>
-    <li><b>Degalai:</b> patikimos degalinės — Rūdiškės, Butrimonys, Daugai, Merkinė. Tarp Onuškio ir Butrimonių ~57 km be nieko. Prieš grįžimą pilk Varėnoje.</li>
-    <li><b>Kelio danga:</b> visas pagrindinis maršrutas asfaltuotas. Žvyro yra tik privažiavimuose prie Vilkokšnio kranto ir kai kuriuose paplūdimių keliukuose.</li>
-    <li><b>Duobės:</b> ruožai Vilkokšnis–Onuškis ir Alovė–Nedzingė vietomis lopyti, po lietaus atsargiau posūkiuose.</li>
-    <li><b>Žmonės:</b> abu ežerai yra ne prie miestų — savaitgalio vidurdienį Dauguose gali būti keliolika poilsiautojų, Vilkokšnyje paprastai vienetai.</li>
-  </ul>
 </div>
 
 <footer>
-  Atstumai apytiksliai (±5 %), laikas skaičiuotas ~60–65 km/h vidurkiu be stotelių.<br>
-  Waze nuorodos veda į koordinates, ne į pavadinimo paiešką — atsidarys tiksliai ten, kur reikia.
+  Atstumai apytiksliai. Waze nuorodos veda į koordinates, ne į pavadinimo paiešką — atsidarys tiksliai ten, kur reikia.<br>
+  Puslapį įsidėk į naršyklės pradžios ekraną.
 </footer>
 
 </div>
